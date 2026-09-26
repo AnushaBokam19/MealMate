@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Mate | Your Hunger Mate</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fffaf3;
+            color: #333;
+        }
+
+        .navbar {
+            background: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #5b8c5a;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero-card {
+            background: white;
+            max-width: 700px;
+            padding: 55px 45px;
+            border-radius: 25px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+        }
+
+        .hero-card h1 {
+            font-size: 48px;
+            color: #5b8c5a;
+            margin-bottom: 12px;
+        }
+
+        .hero-card .subtitle {
+            font-size: 20px;
+            color: #777;
+            margin-bottom: 35px;
+        }
+
+        .hero-card p {
+            color: #888;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 13px 28px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #6fa66d;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #588d56;
+        }
+
+        .btn-secondary {
+            background: #eef6ed;
+            color: #5b8c5a;
+        }
+
+        .btn-secondary:hover {
+            background: #dfeedd;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">🍴 Meal Mate</div>
+        <div class="tagline">Your hunger mate!</div>
+    </nav>
+
+    <section class="hero">
+
+        <div class="hero-card">
+
+            <h1>Meal Mate</h1>
+
+            <div class="subtitle">
+                Your hunger mate! 🍽️
+            </div>
+
+            <p>
+                Discover delicious food, explore restaurants,
+                and enjoy your favorite meals with Meal Mate.
+            </p>
+
+            <div class="button-group">
+
+                <a href="open_signup" class="btn btn-primary">
+                    Create Account
+                </a>
+
+                <a href="open_signin" class="btn btn-secondary">
+                    Sign In
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        © 2026 Meal Mate · Delicious food, happy moments
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Mate | Sign Up</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fffaf3;
+            color: #333;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .card {
+            background: white;
+            width: 100%;
+            max-width: 480px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            text-align: center;
+            color: #5b8c5a;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #999;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            background: #fff;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #7caf78;
+            box-shadow: 0 0 0 3px rgba(124,175,120,0.15);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 10px;
+            background: #6fa66d;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #588d56;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back a {
+            color: #5b8c5a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="logo">🍴 Meal Mate</div>
+
+        <h2>Create Your Account</h2>
+
+        <p class="subtitle">
+            Join Meal Mate and discover delicious food!
+        </p>
+
+        <form action="{% url 'signup' %}" method="post">
+
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label>Mobile</label>
+                <input type="text" name="mobile" required>
+            </div>
+
+            <div class="form-group">
+                <label>Address</label>
+                <textarea name="address" required></textarea>
+            </div>
+
+            <button type="submit">
+                Create Account
+            </button>
+
+        </form>
+
+        <div class="back">
+            Already have an account?
+            <a href="open_signin">Sign In</a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Mate | Add Restaurant</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fffaf3;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 550px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .heading h2 {
+            color: #4d774b;
+            margin-bottom: 8px;
+        }
+
+        .heading p {
+            color: #999;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #7caf78;
+            box-shadow: 0 0 0 3px rgba(124,175,120,0.15);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #6fa66d;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #588d56;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="heading">
+            <h2>🍽️ Add New Restaurant</h2>
+            <p>Add restaurant information below</p>
+        </div>
+
+        <form action="{% url 'add_restaurant' %}" method="post">
+
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Restaurant Name</label>
+                <input type="text" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Picture URL</label>
+                <input type="text" name="picture">
+            </div>
+
+            <div class="form-group">
+                <label>Cuisine</label>
+                <input type="text" name="cuisine" required>
+            </div>
+
+            <div class="form-group">
+                <label>Rating</label>
+                <input
+                    type="number"
+                    name="rating"
+                    min="0"
+                    max="5"
+                    step="0.5"
+                    required
+                >
+            </div>
+
+            <button type="submit">
+                Add Restaurant
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

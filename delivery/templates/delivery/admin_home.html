@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Mate | Admin</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fffaf3;
+            color: #333;
+        }
+
+        .navbar {
+            background: white;
+            padding: 18px 8%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+        .logo {
+            color: #5b8c5a;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+        }
+
+        .welcome {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .welcome h1 {
+            color: #4d774b;
+            margin-bottom: 10px;
+        }
+
+        .welcome p {
+            color: #888;
+        }
+
+        .cards {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 280px;
+            padding: 35px 25px;
+            text-align: center;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #555;
+        }
+
+        .card p {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 11px 22px;
+            border-radius: 20px;
+            background: #6fa66d;
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #588d56;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="logo">🍴 Meal Mate Admin</div>
+</div>
+
+<div class="container">
+
+    <div class="welcome">
+        <h1>Welcome to Admin Home!</h1>
+        <p>Manage restaurants and menu items from here.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">🍽️</div>
+
+            <h3>Add Restaurant</h3>
+
+            <p>
+                Add a new restaurant to Meal Mate.
+            </p>
+
+            <a href="{% url 'open_add_restaurant' %}" class="btn">
+                 Add Restaurant
+            </a>
+        </div>
+
+        <div class="card">
+            <div class="icon">📋</div>
+
+            <h3>Restaurants</h3>
+
+            <p>
+                View and manage existing restaurants.
+            </p>
+
+            <a href="{% url 'open_show_restaurant' %}" class="btn">
+                View Restaurants
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

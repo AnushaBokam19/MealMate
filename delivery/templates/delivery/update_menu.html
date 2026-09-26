@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meal Mate | Menu</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fffaf3;
+            color: #333;
+        }
+
+
+        /* ================= HEADER ================= */
+
+        .header {
+            background: white;
+            padding: 20px 8%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+        .logo {
+            color: #5b8c5a;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #4d774b;
+            margin-bottom: 10px;
+        }
+
+
+        /* ================= SECTION ================= */
+
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            margin-bottom: 20px;
+        }
+
+        .section-title p {
+            color: #999;
+        }
+
+
+        /* ================= TABLE ================= */
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #edf6eb;
+            color: #4d774b;
+            padding: 14px;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+
+        tr:hover {
+            background: #fffdf9;
+        }
+
+
+        /* ================= FOOD IMAGE ================= */
+
+        .food-image {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+
+        /* ================= PRICE ================= */
+
+        .price {
+            font-weight: bold;
+            color: #5b8c5a;
+        }
+
+
+        /* ================= VEG ================= */
+
+        .veg {
+            background: #e8f5e6;
+            color: #4d774b;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+
+        /* ================= NON VEG ================= */
+
+        .non-veg {
+            background: #ffe7e7;
+            color: #c65353;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+
+        /* ================= DELETE BUTTON ================= */
+
+        .delete-button {
+            display: inline-block;
+            padding: 8px 13px;
+            border-radius: 10px;
+            text-decoration: none;
+            background: #ffe7e7;
+            color: #c65353;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+
+        .delete-button:hover {
+            background: #f8cccc;
+            color: #a94444;
+            transform: translateY(-1px);
+        }
+
+
+        /* ================= FORM ================= */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .full {
+            grid-column: 1 / 3;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #7caf78;
+            box-shadow: 0 0 0 3px rgba(111,166,109,0.08);
+        }
+
+
+        /* ================= CHECKBOX ================= */
+
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox input {
+            width: auto;
+        }
+
+        .checkbox label {
+            margin: 0;
+        }
+
+
+        /* ================= ADD BUTTON ================= */
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #6fa66d;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #588d56;
+        }
+
+
+        /* ================= EMPTY MENU ================= */
+
+        .empty-menu {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
+        }
+
+        .empty-menu-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .empty-menu h3 {
+            color: #555;
+            margin: 5px 0;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 700px) {
+
+            .container {
+                margin: 20px auto;
+                padding: 15px;
+            }
+
+            .section {
+                padding: 18px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full {
+                grid-column: 1;
+            }
+
+            .header {
+                padding: 18px 5%;
+            }
+
+            .food-image {
+                width: 70px;
+                height: 55px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<div class="header">
+
+    <div class="logo">
+        🍴 Meal Mate
+    </div>
+
+</div>
+
+
+<div class="container">
+
+
+    <!-- ================= CURRENT MENU ================= -->
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <h2>
+                📋 Current Menu
+            </h2>
+
+            <p>
+                View and manage the menu items for this restaurant.
+            </p>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Item</th>
+
+                        <th>Picture</th>
+
+                        <th>Description</th>
+
+                        <th>Price</th>
+
+                        <th>Type</th>
+
+                        <th>Operation</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for item in itemList %}
+
+                    <tr>
+
+                        <!-- Item Name -->
+
+                        <td>
+                            <strong>
+                                {{ item.name }}
+                            </strong>
+                        </td>
+
+
+                        <!-- Picture -->
+
+                        <td>
+
+                            <img
+                                src="{{ item.picture }}"
+                                class="food-image"
+                                alt="{{ item.name }}"
+                            >
+
+                        </td>
+
+
+                        <!-- Description -->
+
+                        <td>
+                            {{ item.description }}
+                        </td>
+
+
+                        <!-- Price -->
+
+                        <td>
+
+                            <span class="price">
+                                ₹{{ item.price }}
+                            </span>
+
+                        </td>
+
+
+                        <!-- Type -->
+
+                        <td>
+
+                            {% if item.vegeterian %}
+
+                                <span class="veg">
+                                    🌿 Veg
+                                </span>
+
+                            {% else %}
+
+                                <span class="non-veg">
+                                    🔴 Non-Veg
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- Delete -->
+
+                        <td>
+
+                            <a
+                                href="{% url 'delete_menu_item' item.id restaurant.id %}"
+                                class="delete-button"
+                                onclick="return confirm('Are you sure you want to delete this menu item?');"
+                            >
+                                🗑️ Delete
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="6">
+
+                            <div class="empty-menu">
+
+                                <div class="empty-menu-icon">
+                                    🍽️
+                                </div>
+
+                                <h3>
+                                    No menu items yet
+                                </h3>
+
+                                <p>
+                                    Add your first menu item below.
+                                </p>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= ADD MENU ITEM ================= -->
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <h2>
+                ➕ Add Menu Item
+            </h2>
+
+            <p>
+                Add a new food item to this restaurant.
+            </p>
+
+        </div>
+
+
+        <form
+            action="{% url 'update_menu' restaurant.id %}"
+            method="post"
+        >
+
+            {% csrf_token %}
+
+
+            <div class="form-grid">
+
+
+                <!-- Item Name -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Item Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Price -->
+
+                <div class="form-group">
+
+                    <label for="price">
+                        Price
+                    </label>
+
+                    <input
+                        type="number"
+                        id="price"
+                        name="price"
+                        step="0.01"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Description -->
+
+                <div class="form-group full">
+
+                    <label for="description">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- Picture -->
+
+                <div class="form-group">
+
+                    <label for="picture">
+                        Image URL
+                    </label>
+
+                    <input
+                        type="url"
+                        id="picture"
+                        name="picture"
+                    >
+
+                </div>
+
+
+                <!-- Vegetarian -->
+
+                <div class="form-group checkbox">
+
+                    <input
+                        type="checkbox"
+                        id="vegeterian"
+                        name="vegeterian"
+                    >
+
+                    <label for="vegeterian">
+                        Vegetarian
+                    </label>
+
+                </div>
+
+
+                <!-- Submit -->
+
+                <div class="full">
+
+                    <button type="submit">
+                        ➕ Add Menu Item
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meal Mate | Customer</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fffaf3;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #5b8c5a;
+        }
+
+        .customer-badge {
+            background: #edf6eb;
+            color: #4d774b;
+            padding: 9px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 25px auto;
+            padding: 20px;
+        }
+
+        /* Welcome Section */
+        .welcome {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            color: #4d774b;
+            font-size: 32px;
+            margin: 5px 0;
+        }
+
+        .welcome p {
+            color: #777;
+            font-size: 15px;
+            margin-top: 8px;
+        }
+
+        /* Search */
+        .search-box {
+            background: white;
+            padding: 18px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            margin-bottom: 25px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: #5b8c5a;
+            box-shadow: 0 0 0 3px rgba(91, 140, 90, 0.08);
+        }
+
+        /* Restaurant Grid */
+        .restaurant-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        /* Restaurant Card */
+        .restaurant-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 7px 25px rgba(0, 0, 0, 0.07);
+            transition: 0.3s;
+        }
+
+        .restaurant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Restaurant Image */
+        .restaurant-image {
+            width: 100%;
+            height: 160px;
+            object-fit: contain;
+            background: #f8f8f8;
+            padding: 10px;
+        }
+
+        /* Card Content */
+        .card-content {
+            padding: 18px;
+        }
+
+        .restaurant-name {
+            color: #4d774b;
+            font-size: 21px;
+            margin: 0 0 8px;
+        }
+
+        .cuisine {
+            color: #777;
+            font-size: 14px;
+            margin: 0 0 14px;
+        }
+
+        .card-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .rating {
+            background: #fff3d8;
+            color: #9a721e;
+            padding: 7px 11px;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .status {
+            background: #e6f5e4;
+            color: #4d8b4a;
+            padding: 7px 11px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* View Menu Button */
+        .menu-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 11px;
+            border-radius: 10px;
+            text-decoration: none;
+            background: #5b8c5a;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .menu-button:hover {
+            background: #4d774b;
+            transform: translateY(-1px);
+        }
+
+        /* No Results */
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 50px;
+            color: #777;
+        }
+
+        .no-results h3 {
+            color: #555;
+        }
+
+        /* Responsive */
+        @media (max-width: 950px) {
+            .restaurant-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .header {
+                padding: 18px 5%;
+            }
+
+            .logo {
+                font-size: 23px;
+            }
+
+            .container {
+                margin: 15px auto;
+                padding: 15px;
+            }
+
+            .welcome h2 {
+                font-size: 27px;
+            }
+
+            .restaurant-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+
+        <div class="logo">
+            🍴 Meal Mate
+        </div>
+
+        <div class="customer-badge">
+            👤 {{username}}
+        </div>
+
+    </div>
+
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Welcome -->
+        <div class="welcome">
+
+            <h2>
+                Welcome {{username}}! 👋
+            </h2>
+
+            <p>
+                Discover delicious food from your favorite restaurants
+            </p>
+
+        </div>
+
+
+        <!-- Search -->
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search restaurant or cuisine..."
+            >
+
+        </div>
+
+
+        <!-- Restaurant Cards -->
+        <div class="restaurant-container" id="restaurantContainer">
+
+            {% for r in restaurantList %}
+
+            <div
+                class="restaurant-card"
+                data-name="{{ r.name|lower }}"
+                data-cuisine="{{ r.cuisine|lower }}"
+            >
+
+                <img
+                    src="{{ r.picture }}"
+                    class="restaurant-image"
+                    alt="{{ r.name }}"
+                >
+
+                <div class="card-content">
+
+                    <h3 class="restaurant-name">
+                        {{ r.name }}
+                    </h3>
+
+                    <p class="cuisine">
+                        🍴 {{ r.cuisine }}
+                    </p>
+
+                    <div class="card-info">
+
+                        <span class="rating">
+                            ⭐ {{ r.rating }}
+                        </span>
+
+                        <span class="status">
+                            🟢 Open Now
+                        </span>
+
+                    </div>
+
+                    <a
+                        href="{% url 'view_menu' r.id username %}"
+                        class="menu-button"
+                    >
+                        🍽️ View Menu
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <!-- No Results -->
+        <div class="no-results" id="noResults">
+
+            <div style="font-size: 40px;">
+                😔
+            </div>
+
+            <h3>
+                No restaurants found
+            </h3>
+
+            <p>
+                Try searching with another restaurant name or cuisine.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Search JavaScript -->
+    <script>
+
+        const searchInput = document.getElementById("searchInput");
+
+        const cards = document.querySelectorAll(".restaurant-card");
+
+        const noResults = document.getElementById("noResults");
+
+
+        searchInput.addEventListener("input", function () {
+
+            const searchText = this.value.toLowerCase().trim();
+
+            let visibleCount = 0;
+
+
+            cards.forEach(function (card) {
+
+                const name = card.dataset.name;
+
+                const cuisine = card.dataset.cuisine;
+
+
+                if (
+                    name.includes(searchText) ||
+                    cuisine.includes(searchText)
+                ) {
+
+                    card.style.display = "block";
+
+                    visibleCount++;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+
+            if (visibleCount === 0) {
+
+                noResults.style.display = "block";
+
+            } else {
+
+                noResults.style.display = "none";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
